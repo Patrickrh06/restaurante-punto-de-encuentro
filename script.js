@@ -278,7 +278,7 @@ function setupOrderForm() {
 
         message += `\n*TOTAL A PAGAR:* Bs. ${total.toFixed(2)}`;
 
-        const phoneNumber = "59170000000"; 
+        const phoneNumber = "59171416411"; 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
