@@ -1,0 +1,360 @@
+/* ==========================================
+   RESET & CONFIGURACIÓN GLOBAL
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+}
+
+:root {
+    --primary-color: #d32f2f;      /* Rojo apetitoso */
+    --primary-hover: #b71c1c;
+    --accent-color: #f57c00;       /* Naranja cálido */
+    --bg-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --text-color: #2b2b2b;
+    --text-muted: #6c757d;
+    --border-color: #e0e0e0;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.1);
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   HEADER / ENCABEZADO
+   ========================================== */
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-bottom: 4px solid var(--primary-color);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #cccccc;
+}
+
+/* ==========================================
+   LAYOUT PRINCIPAL
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   FILTROS DE CATEGORÍA
+   ========================================== */
+.category-filters {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.category-filters::-webkit-scrollbar {
+    height: 4px;
+}
+
+.category-filters::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.cat-btn {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.cat-btn:hover {
+    background: #f0f0f0;
+    color: var(--text-color);
+}
+
+.cat-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 3px 10px rgba(211, 47, 47, 0.3);
+}
+
+/* ==========================================
+   GRID DE PLATILLOS
+   ========================================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.menu-card {
+    background: var(--surface-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-color: #eee;
+    position: relative;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu-card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #111;
+}
+
+.card-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.card-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.btn-add {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-add:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-add:active {
+    transform: scale(0.96);
+}
+
+/* ==========================================
+   PANEL DEL CARRITO Y FORMULARIO
+   ========================================== */
+.cart-panel {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    height: fit-content;
+    position: sticky;
+    top: 1.5rem;
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    padding: 1.5rem 0;
+}
+
+.cart-items {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding-right: 0.3rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.cart-item-info strong {
+    display: block;
+    font-size: 0.92rem;
+}
+
+.cart-item-info span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.cart-item-controls button {
+    background: #f0f0f0;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cart-item-controls button:hover {
+    background: #e0e0e0;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    padding-top: 0.8rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+/* FORMULARIO */
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #444;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.65rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.btn-submit {
+    background-color: #25d366; /* Verde WhatsApp */
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #1eb956;
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}

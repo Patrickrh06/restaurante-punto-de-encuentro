@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Punto de Encuentro</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>PUNTO DE ENCUENTRO</h1>
+        <p>Sabor tradicional directo a tu mesa</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- SECCIÓN DE PRODUCTOS -->
+        <section class="menu-section">
+            <div class="category-filters">
+                <button class="cat-btn active" data-category="todos">Todos</button>
+                <button class="cat-btn" data-category="platos-diarios">Platos Diarios</button>
+                <button class="cat-btn" data-category="especialidades">Especialidades</button>
+                <button class="cat-btn" data-category="bebidas">Bebidas</button>
+                <button class="cat-btn" data-category="reposteria">Repostería</button>
+            </div>
+
+            <div id="menu-grid" class="menu-grid">
+                <!-- Se llena dinámicamente con JS -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN DEL CARRITO Y FORMULARIO -->
+        <aside class="cart-panel">
+            <div class="cart-header">
+                <i class="fa-solid fa-cart-shopping"></i> Tu Pedido
+            </div>
+
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart-msg">Tu carrito está vacío.</p>
+            </div>
+
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">Bs. 0.00</span>
+            </div>
+
+            <form id="order-form" class="order-form">
+                <div class="form-group">
+                    <label for="client-name">Nombre Completo:</label>
+                    <input type="text" id="client-name" placeholder="Ej: Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="client-address">Dirección de Entrega:</label>
+                    <input type="text" id="client-address" placeholder="Ej: Av. Heroínas y España" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="client-notes">Notas / Indicaciones:</label>
+                    <textarea id="client-notes" rows="2" placeholder="Ej: Sin picante, traer cubiertos..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-brands fa-whatsapp"></i> Realizar Pedido por WhatsApp
+                </button>
+            </form>
+        </aside>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
