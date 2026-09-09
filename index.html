@@ -49,12 +49,20 @@
 
             <form id="order-form" class="order-form">
                 <div class="form-group">
+                    <label for="order-type">Tipo de Pedido:</label>
+                    <select id="order-type" onchange="toggleOrderType()">
+                        <option value="delivery">Entrega a Domicilio</option>
+                        <option value="mesa">Consumo en Mesa (Restaurante)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="client-name">Nombre Completo:</label>
                     <input type="text" id="client-name" placeholder="Ej: Juan Pérez" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="client-address">Dirección de Entrega:</label>
+                <div class="form-group" id="address-group">
+                    <label for="client-address" id="address-label">Dirección de Entrega:</label>
                     <input type="text" id="client-address" placeholder="Ej: Av. Heroínas y España" required>
                 </div>
 

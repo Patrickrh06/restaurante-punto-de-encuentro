@@ -1,4 +1,4 @@
-// Lista de Platos y Bebidas
+// Lista de Platos y Bebidas del Restaurante Punto de Encuentro
 const menuItems = [
     {
         id: 1,
@@ -219,6 +219,21 @@ function updateCartUI() {
     cartTotalPrice.textContent = `Bs. ${total.toFixed(2)}`;
 }
 
+// Cambiar dinámicamente el campo de dirección según el tipo de pedido
+function toggleOrderType() {
+    const orderType = document.getElementById("order-type").value;
+    const addressLabel = document.getElementById("address-label");
+    const addressInput = document.getElementById("client-address");
+
+    if (orderType === "mesa") {
+        addressLabel.textContent = "Número de Mesa:";
+        addressInput.placeholder = "Ej: Mesa 4";
+    } else {
+        addressLabel.textContent = "Dirección de Entrega:";
+        addressInput.placeholder = "Ej: Av. Heroínas y España";
+    }
+}
+
 // Enviar pedido por WhatsApp
 function setupOrderForm() {
     const form = document.getElementById("order-form");
@@ -231,16 +246,27 @@ function setupOrderForm() {
             return;
         }
 
+        const orderType = document.getElementById("order-type").value;
         const name = document.getElementById("client-name").value;
         const address = document.getElementById("client-address").value;
         const notes = document.getElementById("client-notes").value;
 
+        const tipoTexto = orderType === "mesa" ? "Consumo en Mesa" : "Entrega a Domicilio";
+
         let message = `*NUEVO PEDIDO - RESTAURANTE PUNTO DE ENCUENTRO*\n\n`;
+        message += `*Tipo de Servicio:* ${tipoTexto}\n`;
         message += `*Cliente:* ${name}\n`;
-        message += `*Dirección:* ${address}\n`;
+        
+        if (orderType === "mesa") {
+            message += `*Mesa:* ${address}\n`;
+        } else {
+            message += `*Dirección:* ${address}\n`;
+        }
+
         if (notes.trim()) {
             message += `*Notas:* ${notes}\n`;
         }
+
         message += `\n*Detalle del Pedido:*\n`;
 
         let total = 0;
